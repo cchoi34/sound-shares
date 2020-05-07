@@ -1,0 +1,23 @@
+.navbar {
+    font-size: 3rem;
+    position: relative;
+    
+    &__container {
+        // background-color: linear-gradient(to right, turquoise, cyan);
+        background-color: cyan;
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        top: 0;
+        left: 0;
+        text-align: center;
+        justify-content: center;
+    }
+
+    &__link,
+    &__link:visited {
+        text-decoration: none;
+    }
+}
