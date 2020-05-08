@@ -1,0 +1,34 @@
+.compositions {
+    
+    &__list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+
+        list-style: none;
+    }
+
+    &__item {
+        align-items: center;
+        margin: 2rem 1.5rem;
+    }
+
+    &__image {
+        width: 30rem;
+        display: inline-block;
+        box-sizing: border-box;
+        border-bottom: .3rem solid transparent;
+        transition: .2s all;
+
+        &:hover {
+            border-bottom: .3rem solid $color-primary;
+        }
+    }
+
+    &__title {
+        font-size: 1.6rem;
+        text-transform: uppercase;
+        color: $color-grey-dark-3;
+    }
+}

@@ -1,10 +1,10 @@
-.navbar {
+.navbar-menu {
     font-size: 3rem;
     position: relative;
+    display: none;
     
     &__container {
-        // background-color: linear-gradient(to right, turquoise, cyan);
-        background-color: cyan;
+        background-image: linear-gradient(to right, rgba($color-secondary, .5), rgba($color-primary-light, .5));
         width: 100vw;
         height: 100vh;
         display: flex;
@@ -19,5 +19,11 @@
     &__link,
     &__link:visited {
         text-decoration: none;
+        color: $color-grey-dark-3;
+        transition: .3s all;
+    }
+
+    &__link:hover {
+        color: $color-white;
     }
 }

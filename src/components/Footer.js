@@ -4,7 +4,7 @@ class Footer extends React.Component {
     render() {
         return (
             <section className="footer">
-                <h1>This is the Footer</h1>
+                <h1 className="footer__heading-primary">This is the Footer</h1>
             </section>
         )
     }
