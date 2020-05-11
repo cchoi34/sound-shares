@@ -1,19 +1,28 @@
 .navbar-menu {
-    font-size: 3rem;
-    position: relative;
-    display: none;
+    // font-size: 3rem;
+    // position: relative;
+    font-size: 2rem;
     
     &__container {
-        background-image: linear-gradient(to right, rgba($color-secondary, .5), rgba($color-primary-light, .5));
-        width: 100vw;
-        height: 100vh;
+        // background-image: linear-gradient(to right, rgba($color-secondary, .5), rgba($color-primary-light, .5));
+        // width: 100vw;
+        // height: 100vh;
+        // display: flex;
+        // flex-direction: column;
+        // position: fixed;
+        // top: 0;
+        // left: 0;
+        // text-align: center;
+        // justify-content: center;
+        box-shadow: .2rem .2rem 2rem rgba($color-black, .3);
+        padding: 1rem;
+    }
+
+    &__list {
         display: flex;
-        flex-direction: column;
-        position: fixed;
-        top: 0;
-        left: 0;
-        text-align: center;
-        justify-content: center;
+        list-style: none;
+        justify-content: space-between;
+        margin: 1rem 1rem;
     }
 
     &__link,
@@ -24,6 +33,6 @@
     }
 
     &__link:hover {
-        color: $color-white;
+        color: $color-primary;
     }
 }

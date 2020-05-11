@@ -1,6 +1,7 @@
 import React from "react";
 import * as firebase from 'firebase';
 import Compositions from './Compositions';
+import SignIn from './SignIn';
 
 class Home extends React.Component {
     constructor() {
