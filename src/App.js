@@ -16,10 +16,12 @@ import {
   Redirect
 } from "react-router-dom";
 
+import CreateComposition from "./components/CreateComposition.js";
 import Home from "./components/Home.js";
 import NavbarMenu from "./components/NavbarMenu.js";
 import SignIn from "./components/SignIn.js";
 import Footer from "./components/Footer.js";
+import Upload from "./components/Upload.js";
 import { render } from '@testing-library/react';
 
 
@@ -46,12 +48,23 @@ class App extends React.Component {
                       <Route exact path="/">
                         <Home />
                       </Route>
+
                       <Route path="/home">
                         <Home />
                       </Route>
+
                       <Route path="/signin">
                         <SignIn />
                       </Route>
+
+                      <Route path="/upload">
+                        <Upload />
+                      </Route>
+
+                      <Route path="/upload-composition">
+                        <CreateComposition />
+                      </Route>
+                      
                     </Switch>
                   </main>
                 </FirebaseAuthProvider>

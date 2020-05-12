@@ -32,7 +32,7 @@ class NavbarMenu extends React.Component {
                         </li>
 
                         <li className="navbar-menu__item">
-                            <Link to="#" className="navbar-menu__link">Upload</Link>
+                            <Link to="/upload" className="navbar-menu__link">Upload</Link>
                         </li>
 
                         <li className="navbar-menu__item">
