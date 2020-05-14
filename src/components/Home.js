@@ -1,5 +1,4 @@
 import React from "react";
-import * as firebase from 'firebase';
 import Compositions from './Compositions';
 import SignIn from './SignIn';
 
@@ -8,27 +7,11 @@ class Home extends React.Component {
         super();
         this.state = {
             name: "Christopher Choi",
-            imageURL: "https://image.shutterstock.com/image-vector/lamps-hanging-above-line-drawing-600w-1549579187.jpg",
-            videoURL: "https://youtu.be/mYAmSXpeFjM",
         };
     }
 
     componentDidMount() {
-        const rootRef = firebase.database().ref();
-
-        const nameRef = rootRef.child('name');
-        nameRef.on('value', snap => {
-            this.setState({
-                name: snap.val(),
-            })
-        })
-
-        const imageRef = rootRef.child('imageURL');
-        imageRef.on('value', snap => {
-            this.setState({
-                imageURL: snap.val(),
-            })
-        })
+        
     }
 
     render() {

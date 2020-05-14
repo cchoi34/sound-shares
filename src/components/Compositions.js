@@ -1,22 +1,17 @@
 import React from "react";
-import * as firebase from 'firebase';
+import { getCompositions, deleteComposition, getSingleComposition } from '../firebase/functions.js';
 
 class Compositions extends React.Component {
     constructor() {
         super();
         this.state = {
-            compositions: []
+            compositions: [],
+            singleComposition: {}
         };
     }
 
     componentDidMount() {
-        const rootRef = firebase.database().ref();
-        const compositionRef = rootRef.child('compositions');
-        compositionRef.on('value', snap => {
-            this.setState({
-                compositions: snap.val()
-            })
-        })
+        getCompositions(this);
     }
 
     render() {
@@ -32,6 +27,10 @@ class Compositions extends React.Component {
                                 <li className="compositions__item" key={composition.id}>
                                     <img className="compositions__image" src={composition.imageURL} />
                                     <p className="compositions__title">{composition.name}</p>
+
+                                    <button className="compositions__button-delete" onClick={() => {
+                                        deleteComposition(composition.id);
+                                    }}>X</button>
                                 </li>
                             )
                         })}
