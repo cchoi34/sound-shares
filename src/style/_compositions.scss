@@ -12,23 +12,46 @@
     &__item {
         align-items: center;
         margin: 2rem 1.5rem;
+        position: relative;
+
+        &:hover .compositions__image {
+            border: .3rem solid $color-primary;
+            opacity: 75%;
+        }
+
+        &:hover .compositions__title {
+            font-weight: 400;
+            color: $color-grey-light-3;
+        }
+
+        &:hover .compositions__button-delete {
+            opacity: 100%;
+        }
     }
 
     &__image {
         width: 30rem;
         display: inline-block;
         box-sizing: border-box;
-        border-bottom: .3rem solid transparent;
+        border: .3rem solid transparent;
         transition: .2s all;
-
-        &:hover {
-            border-bottom: .3rem solid $color-primary;
-        }
     }
 
     &__title {
         font-size: 1.6rem;
         text-transform: uppercase;
         color: $color-grey-dark-3;
+    }
+
+    &__button-delete {
+        border-style: none;
+        color: $color-grey-light-3;
+        text-shadow: .1rem .1rem rgba($color-black, .5);
+        font-size: 1.6rem;
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        background-color: transparent;
+        opacity: 0%;
     }
 }

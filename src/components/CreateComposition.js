@@ -6,7 +6,8 @@ class CreateComposition extends React.Component {
         super();
         this.state = {
             name: "",
-            imageURL: ""
+            imageURL: "",
+            visible: false
         }
 
         this.handleChange = this.handleChange.bind(this);
@@ -28,15 +29,21 @@ class CreateComposition extends React.Component {
     }
 
     handleNotification() {
-        const message = document.getElementById("create-composition__message-success");
-        message.style.display = "block";
+        if (this.state.visible) return;
+
+        this.setState({
+            visible: true
+        })
         window.setTimeout(() => {
-            const message = document.getElementById("create-composition__message-success");
-            message.style.display = "none";
+            this.setState({
+                visible: false
+            })
         }, 2000);
     }
 
     render() {
+        let visibleClass = this.state.visible ? "create-composition__visible" : "create-composition__invisible"
+
         return(
             <section className="create-composition">
                 <h1 className="create-composition__header header-primary">Upload a Composition</h1>
@@ -54,7 +61,7 @@ class CreateComposition extends React.Component {
                     </button>
                 </div>
 
-                <div className="create-composition__message-success" id="create-composition__message-success">
+                <div className={`create-composition__message-success ${visibleClass}`} id="create-composition__message-success">
                     <h2 className="create-composition__message">Composition added!</h2>
                 </div>
 

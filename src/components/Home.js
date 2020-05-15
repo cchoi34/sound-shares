@@ -17,7 +17,7 @@ class Home extends React.Component {
     render() {
         return (
             <section className="home">
-                <h1 className="home__heading-primary">Welcome {this.state.name}, to Quick Mash!</h1>
+                <h1 className="home__heading-primary">Welcome {this.state.name}, to Quick Comps!</h1>
                 <Compositions />
             </section>
         )

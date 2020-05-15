@@ -87,17 +87,11 @@
         animation: fadeInOut ease-out 2s;
     }
 
-    @keyframes fadeInOut {
-        0% {
-            opacity: 0%;
-        }
+    &__visible {
+        display: block;
+    }
 
-        35% {
-            opacity: 100%;
-        }
-
-        100% {
-            opacity: 0%;
-        }
+    &__invisible {
+        display: none;
     }
 }
