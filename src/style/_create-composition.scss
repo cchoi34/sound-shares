@@ -74,4 +74,30 @@
             transform: translateY(0);
         }
     }
+
+    &__message {
+        font-size: 2.5rem;
+        font-weight: 300;
+        color: $color-grey-dark-1;
+    }
+
+    &__message-success {
+        display: none;
+        margin-top: 2.5rem;
+        animation: fadeInOut ease-out 2s;
+    }
+
+    @keyframes fadeInOut {
+        0% {
+            opacity: 0%;
+        }
+
+        35% {
+            opacity: 100%;
+        }
+
+        100% {
+            opacity: 0%;
+        }
+    }
 }

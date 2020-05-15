@@ -11,6 +11,7 @@ class CreateComposition extends React.Component {
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleNotification = this.handleNotification.bind(this);
     }
 
     handleChange(event) {
@@ -23,6 +24,16 @@ class CreateComposition extends React.Component {
         console.log("Submitted!", this.state);
         event.preventDefault();
         postComposition(this.state);
+        this.handleNotification();
+    }
+
+    handleNotification() {
+        const message = document.getElementById("create-composition__message-success");
+        message.style.display = "block";
+        window.setTimeout(() => {
+            const message = document.getElementById("create-composition__message-success");
+            message.style.display = "none";
+        }, 2000);
     }
 
     render() {
@@ -42,6 +53,11 @@ class CreateComposition extends React.Component {
                         Submit
                     </button>
                 </div>
+
+                <div className="create-composition__message-success" id="create-composition__message-success">
+                    <h2 className="create-composition__message">Composition added!</h2>
+                </div>
+
             </section>
         )
     }
