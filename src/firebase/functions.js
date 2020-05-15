@@ -49,7 +49,8 @@ export function getSingleComposition(component, id) {
             const data = snap.val();
             console.log("Setting single comp with: ", data);
             component.setState({
-                singleComposition: data
+                title: data.name,
+                imageURL: data.imageURL
             })
         });
     } 

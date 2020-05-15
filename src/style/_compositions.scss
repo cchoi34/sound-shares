@@ -14,6 +14,10 @@
         margin: 2rem 1.5rem;
         position: relative;
 
+        &__link {
+            text-decoration: none;
+        }
+
         &:hover .compositions__image {
             border: .3rem solid $color-primary;
             opacity: 75%;

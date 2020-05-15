@@ -1,5 +1,12 @@
 import React from "react";
-import { getCompositions, deleteComposition, getSingleComposition } from '../firebase/functions.js';
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link,
+    Redirect
+  } from "react-router-dom";
+import { getCompositions, deleteComposition, getSingleComposition } from "../firebase/functions.js";
 
 class Compositions extends React.Component {
     constructor() {
@@ -25,12 +32,14 @@ class Compositions extends React.Component {
                         {this.state.compositions.map((composition) => {
                             return (
                                 <li className="compositions__item" key={composition.id}>
-                                    <img className="compositions__image" src={composition.imageURL} />
-                                    <p className="compositions__title">{composition.name}</p>
+                                    <Link to={`/single-composition/${composition.id}`} className="compositions__item__link">
+                                        <img className="compositions__image" src={composition.imageURL} />
+                                        <p className="compositions__title">{composition.name}</p>
 
-                                    <button className="compositions__button-delete" onClick={() => {
-                                        deleteComposition(composition.id);
-                                    }}>X</button>
+                                        <button className="compositions__button-delete" onClick={() => {
+                                            deleteComposition(composition.id);
+                                        }}>X</button>
+                                    </Link>
                                 </li>
                             )
                         })}

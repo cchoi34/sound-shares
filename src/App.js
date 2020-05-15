@@ -20,6 +20,7 @@ import CreateComposition from "./components/CreateComposition.js";
 import Home from "./components/Home.js";
 import NavbarMenu from "./components/NavbarMenu.js";
 import SignIn from "./components/SignIn.js";
+import SingleComposition from "./components/SingleComposition.js";
 import Footer from "./components/Footer.js";
 import Upload from "./components/Upload.js";
 import { render } from '@testing-library/react';
@@ -45,25 +46,17 @@ class App extends React.Component {
                   <main className="main">
                     <NavbarMenu />
                     <Switch>
-                      <Route exact path="/">
-                        <Home />
-                      </Route>
+                      <Route exact path="/" component={Home} />
 
-                      <Route path="/home">
-                        <Home />
-                      </Route>
+                      <Route path="/home" component={Home} />
 
-                      <Route path="/signin">
-                        <SignIn />
-                      </Route>
+                      <Route path="/signin" component={SignIn} />
 
-                      <Route path="/upload">
-                        <Upload />
-                      </Route>
+                      <Route path="/upload" component={Upload} />
 
-                      <Route path="/upload-composition">
-                        <CreateComposition />
-                      </Route>
+                      <Route path="/upload-composition" component={CreateComposition} />
+
+                      <Route path="/single-composition/:id" component={SingleComposition} />
                       
                     </Switch>
                   </main>
