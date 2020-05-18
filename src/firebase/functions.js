@@ -50,7 +50,8 @@ export function getSingleComposition(component, id) {
             console.log("Setting single comp with: ", data);
             component.setState({
                 title: data.name,
-                imageURL: data.imageURL
+                imageURL: data.imageURL,
+                description: data.description
             })
         });
     } 
@@ -65,6 +66,7 @@ export function postComposition(state) {
     
         const name = state.name || defaults.name;
         const imageURL = state.imageURL || defaults.imageURL;
+        const description = state.description || defaults.description;
     
         const compositionList = firebase.database().ref().child('compositions');
         const newComposition = compositionList.push();
@@ -73,7 +75,8 @@ export function postComposition(state) {
         newComposition.set({
             'id': key,
             'name': name,
-            'imageURL': imageURL
+            'imageURL': imageURL,
+            'description': description
         });
     } 
     catch (error) {
@@ -90,6 +93,28 @@ export function deleteComposition(id) {
     } 
     catch (error) {
         console.log("Error in deleting composition!");
+    }
+}
+
+export function updateComposition(id, body) {
+    try {
+        const compositionRef = firebase.database().ref().child('compositions');
+        const compToUpdate = compositionRef.child(`${id}`);
+        
+        const defaults = getDefaultValues();
+        const name = body.name || defaults.name;
+        const imageURL = body.imageURL || defaults.imageURL
+        const description = body.description || defaults.description;
+
+        compToUpdate.set({
+            id: id,
+            name: name,
+            imageURL: imageURL,
+            description: description
+        }); 
+    }
+    catch (error) {
+        console.log("Error in updating composition!");
     }
 }
 
@@ -112,6 +137,7 @@ function getDefaultValues() {
         const randomImage = Math.floor(Math.random() * defaultImages.length);
         const imageURL = defaultImages[randomImage];
         const name = "no-name-provided";
+        const description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
 
-        return { name, imageURL };
+        return { name, imageURL, description };
 }

@@ -7,6 +7,7 @@ class CreateComposition extends React.Component {
         this.state = {
             name: "",
             imageURL: "",
+            description: "",
             visible: false
         }
 
@@ -55,6 +56,9 @@ class CreateComposition extends React.Component {
 
                         <label htmlFor="imageURL" className="create-composition__label">Image-URL</label>
                         <input type="text" className="create-composition__input" placeholder="https://www.example.com/example.png" id="imageURL" onChange={this.handleChange} />
+
+                        <label htmlFor="description" className="create-composition__label">Description</label>
+                        <input type="text" className="create-composition__input" placeholder="Enter in a description" id="description" onChange={this.handleChange} />
                     </form>
                     <button className="create-composition__button button" onClick={this.handleSubmit} >
                         Submit
