@@ -47,9 +47,8 @@ export function getSingleComposition(component, id) {
 
         singleCompositionRef.on('value', snap => {
             const data = snap.val();
-            console.log("Setting single comp with: ", data);
             component.setState({
-                title: data.name,
+                name: data.name,
                 imageURL: data.imageURL,
                 description: data.description
             })
@@ -106,11 +105,12 @@ export function updateComposition(id, body) {
         const imageURL = body.imageURL || defaults.imageURL
         const description = body.description || defaults.description;
 
+        console.log("setting new data in update: ", {id, name, imageURL, description});
         compToUpdate.set({
-            id: id,
-            name: name,
-            imageURL: imageURL,
-            description: description
+            'id': id,
+            'name': name,
+            'imageURL': imageURL,
+            'description': description
         }); 
     }
     catch (error) {
@@ -119,7 +119,8 @@ export function updateComposition(id, body) {
 }
 
 function getDefaultValues() {
-    const defaultImages = ["https://i.pinimg.com/originals/22/8e/30/228e303f741a61efc44deb7e793951df.png",
+    const defaultImages = [    
+                               "https://i.pinimg.com/originals/22/8e/30/228e303f741a61efc44deb7e793951df.png",
                                "https://cdn.statically.io/img/wallpapercave.com/wp/wp4591616.jpg",
                                "https://www.ecopetit.cat/wpic/mpic/2-27120_banner-aesthetic-youtube-backgrounds.jpg",
                                "https://i.pinimg.com/originals/cc/9a/04/cc9a04b4beca39e6b793821e1352efcb.jpg",
@@ -132,7 +133,7 @@ function getDefaultValues() {
                                "https://images.hdqwalls.com/download/mercedes-benz-aesthetics-a-concept-to-1920x1080.jpg",
                                "https://i.pinimg.com/originals/5b/50/78/5b50786d19dc8d7d36603fce2894a123.jpg",
                                "https://cutewallpaper.org/21/computer-wallpapers-aesthetic/Desktop-Backgrounds-1920x1080-Vaporwave-Aesthetic-.jpg"
-                              ];
+                          ];
     
         const randomImage = Math.floor(Math.random() * defaultImages.length);
         const imageURL = defaultImages[randomImage];

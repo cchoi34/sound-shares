@@ -36,10 +36,10 @@ class Compositions extends React.Component {
                                         <img className="compositions__image" src={composition.imageURL} />
                                         <p className="compositions__title">{composition.name}</p>
 
+                                    </Link>
                                         <button className="compositions__button-delete" onClick={() => {
                                             deleteComposition(composition.id);
                                         }}>X</button>
-                                    </Link>
                                 </li>
                             )
                         })}

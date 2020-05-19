@@ -1,0 +1,90 @@
+.update-composition {
+    font-size: 2rem;
+    color: $color-grey-dark-3;
+
+    &__container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 4rem;
+    }
+
+    &__form {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__title {
+        margin-bottom: 2rem;
+    }
+
+    &__image {
+        width: 50rem;
+        margin: 2rem 0;
+        border-radius: 5rem;
+    }
+
+    &__description {
+        margin: 2rem 0;
+    }
+
+    &__audio,
+    &__video {
+        font-size: 1.6rem;
+        font-weight: 100;
+        margin-bottom: 1.6rem;
+    }
+
+    &__input {
+        word-wrap: break-word;
+        border: .2rem solid $color-grey-light-1;
+        border-radius: 1rem;
+        padding: 1rem;
+        margin: 2rem;
+        transition: .3s all;
+
+        cursor: pointer;
+
+        &:focus {
+            outline: none;
+            border: .2rem solid $color-primary;
+        }
+    }
+
+    &__title {
+        font-size: 2.5rem;
+    }
+
+    &__imageURL {
+        font-size: 1.6rem;
+    }
+
+    &__description {
+        height: 15rem;;
+        font-size: 1.6rem;
+    }
+
+    &__link {
+        text-decoration: none;
+    }
+
+    &__button {
+        margin-top: 3rem;
+        border-style: none;
+        border-radius: 3rem;
+        padding: 1rem;
+        color: rgba(11, 33, 230, 0.678);
+        font-weight: 300;
+        background-image: linear-gradient(to right, rgba($color-primary-light, .6), rgba($color-primary, .6));
+        font-size: 1.6rem;
+        text-transform: uppercase;
+        transition: .3s all;
+
+        cursor: pointer;
+
+        &:hover {
+            color: $color-white;
+            background-image: linear-gradient(to right, rgba($color-primary-light, .7), rgba($color-primary-dark, .7));
+        }
+    }
+}

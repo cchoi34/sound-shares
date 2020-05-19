@@ -1,47 +1,75 @@
 import React from 'react';
-import { getSingleComposition } from '../firebase/functions.js';
+import { getSingleComposition, updateComposition } from '../firebase/functions.js';
+import { Link } from "react-router-dom";
 
 class UpdateComposition extends React.Component {
     constructor() {
         super();
         this.state = {
-            title: "Single Composition",
+            name: "Single Composition",
             imageURL: "https://i.pinimg.com/originals/5b/50/78/5b50786d19dc8d7d36603fce2894a123.jpg",
-            description: "\"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\"",
+            description: "Enter a description...",
         }
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handlePreview = this.handlePreview.bind(this);
     }
 
     componentDidMount() {
-        
+        const id = this.props.match.params.id;
+        getSingleComposition(this, id);
     }
 
     handleChange(event) {
-
+        console.log("Handle Change: ", this.state);
+        this.setState({
+            [event.target.name]: event.target.value,
+        })
     }
 
-    handleSubmit(event) {
-
+    handleSubmit(id) {
+        updateComposition(id, this.state);
     }
 
     handlePreview(event) {
-        
+
     }
 
     render() {
+        const id = this.props.match.params.id;
+
         return(
             <section className="update-composition">
                 <div className="update-composition__container">
-                    <form className="update-composition-form">
-                        <input className="update-composition-input update-composition-title" type="text" placeholder={this.state.title} />
+                    <form className="update-composition__form">
+                        <input className="update-composition__input update-composition__title" 
+                               type="text" 
+                               name="name" 
+                               placeholder={this.state.name} 
+                               onChange={this.handleChange} />
 
                         <img src={this.state.imageURL} className="update-composition__image "/>
-                        <input className="update-composition-input update-composition-imageURL" type="text" placeholder={this.state.imageURL} />
+                        <input className="update-composition__input update-composition__imageURL" 
+                               type="text" 
+                               name="imageURL" 
+                               placeholder={this.state.imageURL} 
+                               onChange={this.handleChange} />
 
-                        <input className="update-composition-input update-composition-description" type="text" placeholder={this.state.description} />
+                        <textarea className="update-composition__input update-composition__description" 
+                                  type="text" 
+                                  name="description" 
+                                  placeholder={this.state.description} 
+                                  onChange={this.handleChange} />
                     </form>
                     
                     <p className="update-composition__audio">Audio</p>
                     <p className="update-composition__video">Video</p>
+
+                    <Link to={`/single-composition/${id}`} className="update-composition__link">
+                        <button className="update-composition__button" onClick={() => {
+                            this.handleSubmit(id);
+                        }} >Save Changes</button>
+                    </Link>
                 </div>
             </section>
         )
