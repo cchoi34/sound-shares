@@ -24,11 +24,11 @@ class NavbarMenu extends React.Component {
                         </li>
 
                         <li className="navbar-menu__item">
-                            <Link to="#" className="navbar-menu__link">Audios</Link>
+                            <Link to="/audio" className="navbar-menu__link">Audios</Link>
                         </li>
 
                         <li className="navbar-menu__item">
-                            <Link to="#" className="navbar-menu__link">Videos</Link>
+                            <Link to="/video" className="navbar-menu__link">Videos</Link>
                         </li>
 
                         <li className="navbar-menu__item">

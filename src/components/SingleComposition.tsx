@@ -1,10 +1,11 @@
 import React from 'react';
 import { getSingleComposition } from '../firebase/functions.js';
 import { Link } from "react-router-dom";
+import { IMatchProps, ICompositionStateType } from "../types/types";
 
-class SingleComposition extends React.Component {
-    constructor() {
-        super();
+class SingleComposition extends React.Component<IMatchProps, ICompositionStateType> {
+    constructor(props: IMatchProps) {
+        super(props);
         this.state = {
             name: "Single Composition",
             imageURL: "https://i.pinimg.com/originals/5b/50/78/5b50786d19dc8d7d36603fce2894a123.jpg",

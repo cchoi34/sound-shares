@@ -8,7 +8,7 @@ import {
     Redirect
   } from "react-router-dom";
 
-function Upload() {
+const Upload: React.FC = () => {
     return(
         <section className="upload">
             <div className="upload__container upload__container--audio">

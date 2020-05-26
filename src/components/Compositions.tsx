@@ -7,13 +7,24 @@ import {
     Redirect
   } from "react-router-dom";
 import { getCompositions, deleteComposition, getSingleComposition } from "../firebase/functions.js";
+import { nullProps } from "../types/types";
 
-class Compositions extends React.Component {
-    constructor() {
-        super();
+type compositionType = {
+    id: string,
+    name: string,
+    imageURL: string,
+    description: string
+}
+
+type compositionStateType = {
+    compositions: compositionType[],
+}
+
+class Compositions extends React.Component<nullProps, compositionStateType> {
+    constructor(props: nullProps) {
+        super(props)
         this.state = {
             compositions: [],
-            singleComposition: {}
         };
     }
 

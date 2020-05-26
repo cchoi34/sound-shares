@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { SyntheticEvent } from 'react';
 import { getSingleComposition, updateComposition } from '../firebase/functions.js';
 import { Link } from "react-router-dom";
+import { IMatchProps, IEditCompositionStateType } from "../types/types";
 
-class UpdateComposition extends React.Component {
-    constructor() {
-        super();
+class UpdateComposition extends React.Component<IMatchProps, IEditCompositionStateType> {
+    constructor(props: IMatchProps) {
+        super(props);
         this.state = {
             name: "Single Composition",
             imageURL: "https://i.pinimg.com/originals/5b/50/78/5b50786d19dc8d7d36603fce2894a123.jpg",
@@ -12,7 +13,7 @@ class UpdateComposition extends React.Component {
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.handlePreview = this.handlePreview.bind(this);
+        // this.handlePreview = this.handlePreview.bind(this);
     }
 
     componentDidMount() {
@@ -20,20 +21,21 @@ class UpdateComposition extends React.Component {
         getSingleComposition(this, id);
     }
 
-    handleChange(event) {
-        console.log("Handle Change: ", this.state);
+    handleChange(event: SyntheticEvent) {
+        console.log("state is changing: ", this.state);
+        const target = event.target as HTMLInputElement | HTMLTextAreaElement;
         this.setState({
-            [event.target.name]: event.target.value,
+            [target.name]: target.value,
         })
     }
 
-    handleSubmit(id) {
+    handleSubmit(id: string) {
         updateComposition(id, this.state);
     }
 
-    handlePreview(event) {
+    // handlePreview(event) {
 
-    }
+    // }
 
     render() {
         const id = this.props.match.params.id;
@@ -56,7 +58,6 @@ class UpdateComposition extends React.Component {
                                onChange={this.handleChange} />
 
                         <textarea className="update-composition__input update-composition__description" 
-                                  type="text" 
                                   name="description" 
                                   placeholder={this.state.description} 
                                   onChange={this.handleChange} />

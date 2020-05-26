@@ -1,0 +1,36 @@
+.coming-soon {
+
+    text-align: center;
+
+    &__header {
+        font-size: 1.6rem;
+        color: $color-grey-dark-3;
+        margin: 3rem;
+        margin-top: 6rem;
+    }
+
+    &__image {
+        width: 60rem;
+
+        &:hover {
+            opacity: .75;
+        }
+    }
+
+    &__link {
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    &__back {
+        color: $color-grey-dark-3;
+        transition: all .3s;
+        font-size: 2.6rem;
+        margin-top: 2rem;
+        
+        &:hover {
+            color: $color-primary;
+            transform: translateY(-.4rem);
+        }
+    }
+}

@@ -1,24 +1,25 @@
 import React from "react";
 import Compositions from './Compositions';
 import SignIn from './SignIn';
+import { nullProps } from "../types/types";
 
-class Home extends React.Component {
-    constructor() {
-        super();
+type HomeStateType = {
+    name: string
+}
+
+class Home extends React.Component<nullProps, HomeStateType> {
+    constructor(props: nullProps) {
+        super(props);
         this.state = {
             name: "Christopher Choi",
         };
-    }
-
-    componentDidMount() {
-        
     }
 
     render() {
         return (
             <section className="home">
                 <h1 className="home__heading-primary">Welcome {this.state.name}, to Quick Comps!</h1>
-                <Compositions />
+                <Compositions empty={null} />
             </section>
         )
     }

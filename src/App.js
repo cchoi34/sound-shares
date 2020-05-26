@@ -16,14 +16,15 @@ import {
   Redirect
 } from "react-router-dom";
 
-import CreateComposition from "./components/CreateComposition.js";
-import Home from "./components/Home.js";
-import NavbarMenu from "./components/NavbarMenu.js";
-import SignIn from "./components/SignIn.js";
-import SingleComposition from "./components/SingleComposition.js";
-import Footer from "./components/Footer.js";
-import UpdateComposition from "./components/UpdateComposition.js";
-import Upload from "./components/Upload.js";
+import ComingSoon from "./components/ComingSoon";
+import CreateComposition from "./components/CreateComposition";
+import Home from "./components/Home";
+import NavbarMenu from "./components/NavbarMenu";
+import SignIn from "./components/SignIn";
+import SingleComposition from "./components/SingleComposition";
+import Footer from "./components/Footer";
+import UpdateComposition from "./components/UpdateComposition";
+import Upload from "./components/Upload";
 import { render } from '@testing-library/react';
 
 
@@ -60,7 +61,10 @@ class App extends React.Component {
                       <Route exact path="/single-composition/:id" component={SingleComposition} />
 
                       <Route path="/single-composition/:id/edit" component={UpdateComposition} />
-                      
+
+                      <Route path="/video" component={ComingSoon} />
+
+                      <Route path="/audio" component={ComingSoon} />
                     </Switch>
                   </main>
                 </FirebaseAuthProvider>

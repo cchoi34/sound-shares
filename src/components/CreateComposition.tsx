@@ -1,14 +1,16 @@
-import React from 'react';
+import React, { SyntheticEvent } from 'react';
 import {postComposition} from '../firebase/functions.js';
+import { nullProps, IEditCompositionStateType } from "../types/types";
 
-class CreateComposition extends React.Component {
-    constructor() {
-        super();
+class CreateComposition extends React.Component<nullProps, IEditCompositionStateType> {
+    constructor(props: nullProps) {
+        super(props);
+
         this.state = {
             name: "",
             imageURL: "",
             description: "",
-            visible: false
+            notification: ""
         }
 
         this.handleChange = this.handleChange.bind(this);
@@ -16,13 +18,15 @@ class CreateComposition extends React.Component {
         this.handleNotification = this.handleNotification.bind(this);
     }
 
-    handleChange(event) {
+    handleChange(event: SyntheticEvent) {
+        const target = event.target as HTMLInputElement | HTMLTextAreaElement;
+
         this.setState({
-            [event.target.id]: event.target.value
-        })
+            [target.id]: target.value
+        });
     }
 
-    handleSubmit(event) {
+    handleSubmit(event: SyntheticEvent) {
         console.log("Submitted!", this.state);
         event.preventDefault();
         postComposition(this.state);
@@ -30,20 +34,20 @@ class CreateComposition extends React.Component {
     }
 
     handleNotification() {
-        if (this.state.visible) return;
+        if (this.state.notification === "notified") return;
 
         this.setState({
-            visible: true
+            notification: "notified"
         })
         window.setTimeout(() => {
             this.setState({
-                visible: false
+                notification: ""
             })
         }, 2000);
     }
 
     render() {
-        let visibleClass = this.state.visible ? "create-composition__visible" : "create-composition__invisible"
+        let visibleClass = this.state.notification ? "create-composition__visible" : "create-composition__invisible"
 
         return(
             <section className="create-composition">
