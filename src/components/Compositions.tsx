@@ -56,7 +56,8 @@ class Compositions extends React.Component<nullProps, compositionStateType> {
                         })}
                         </ul>
                         :
-                        <h1 className="empty-data">No compositions found!</h1>
+                        <h1 className="empty-data"><i className="fa fa-spinner fa-spin loading-icon"></i></h1>
+                        
                 }
             </section>
 
