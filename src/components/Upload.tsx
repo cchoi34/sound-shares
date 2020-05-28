@@ -36,9 +36,11 @@ const Upload: React.FC = () => {
                     New composition
                 </h2>
                 <img src="https://i.redd.it/nddw0kak6nq41.jpg" className="upload__image" />
-                <button className="upload__button button">
-                    <Link className="upload__button--link" to="/upload-composition">Upload</Link>
-                </button>
+                    <Link className="upload__button--link" to="/upload-composition">
+                        <button className="upload__button button">
+                            Upload
+                        </button>
+                    </Link>
             </div>
      
         </section>

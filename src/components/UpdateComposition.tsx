@@ -9,7 +9,7 @@ class UpdateComposition extends React.Component<IMatchProps, IEditCompositionSta
         super(props);
         this.state = {
             name: "Single Composition",
-            imageURL: "https://i.pinimg.com/originals/5b/50/78/5b50786d19dc8d7d36603fce2894a123.jpg",
+            imageURL: "",
             description: "Enter a description...",
             deletePopup: "invisible",
             redirect: "",
@@ -61,53 +61,60 @@ class UpdateComposition extends React.Component<IMatchProps, IEditCompositionSta
         }
 
         const id = this.props.match.params.id;
+        const imageURL = this.state.imageURL;
 
         return(
             <section className="update-composition">
                 {
                     this.state.deletePopup === "visible" && <DeleteWarning togglePopup={this.handleDeleteWarning} handleDelete={this.handleDelete} id={id} /> 
                 }
-                <div className="update-composition__container">
-                    <form className="update-composition__form">
-                        <input className="update-composition__input update-composition__title" 
-                               type="text" 
-                               name="name" 
-                               value={this.state.name} 
-                               onChange={this.handleChange} />
 
-                        <img src={this.state.imageURL} className="update-composition__image "/>
-                        <input className="update-composition__input update-composition__imageURL" 
-                               type="text" 
-                               name="imageURL" 
-                               value={this.state.imageURL} 
-                               onChange={this.handleChange} />
+                {
+                    imageURL ?
+                        <div className="update-composition__container">
+                            <form className="update-composition__form">
+                                <input className="update-composition__input update-composition__title" 
+                                    type="text" 
+                                    name="name" 
+                                    value={this.state.name} 
+                                    onChange={this.handleChange} />
 
-                        <textarea className="update-composition__input update-composition__description" 
-                                  name="description" 
-                                  value={this.state.description} 
-                                  onChange={this.handleChange} />
-                    </form>
-                    
-                    {/* <p className="update-composition__audio">Audio</p>
-                    <p className="update-composition__video">Video</p> */}
+                                <img src={this.state.imageURL} className="update-composition__image "/>
+                                <input className="update-composition__input update-composition__imageURL" 
+                                    type="text" 
+                                    name="imageURL" 
+                                    value={this.state.imageURL} 
+                                    onChange={this.handleChange} />
 
-                    <div className="update-composition__button-container" >
-                        <button 
-                            className="update-composition__button-delete update-composition__button" 
-                            onClick={() => {
-                                            this.handleDeleteWarning();
-                                        }}>
-                            Delete Composition           
-                        </button>
+                                <textarea className="update-composition__input update-composition__description" 
+                                        name="description" 
+                                        value={this.state.description} 
+                                        onChange={this.handleChange} />
+                            </form>
+                            
+                            {/* <p className="update-composition__audio">Audio</p>
+                            <p className="update-composition__video">Video</p> */}
 
-                        <Link to={`/single-composition/${id}`} className="update-composition__link">
-                            <button className="update-composition__button" onClick={() => {
-                                this.handleSubmit(id);
-                            }} >Save Changes</button>
-                        </Link>
+                            <div className="update-composition__button-container" >
+                                <button 
+                                    className="update-composition__button-delete update-composition__button" 
+                                    onClick={() => {
+                                                    this.handleDeleteWarning();
+                                                }}>
+                                    Delete Composition           
+                                </button>
 
-                    </div>
-                </div>
+                                <Link to={`/single-composition/${id}`} className="update-composition__link">
+                                    <button className="update-composition__button" onClick={() => {
+                                        this.handleSubmit(id);
+                                    }} >Save Changes</button>
+                                </Link>
+
+                            </div>
+                        </div> :
+
+                        <h1 className="empty-data"><i className="fa fa-spinner fa-spin loading-icon"></i></h1>
+                }
             </section>
         )
     }
