@@ -1,5 +1,5 @@
 import React from 'react';
-import { getSingleComposition } from '../firebase/functions.js';
+import { getSingleComposition } from '../firebase/functions';
 import { Link } from "react-router-dom";
 import { IMatchProps, ICompositionStateType } from "../types/types";
 

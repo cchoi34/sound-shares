@@ -2,6 +2,12 @@ export interface nullProps {
     empty: null;
 }
 
+export interface IDeleteProps {
+    togglePopup: any,
+    handleDelete: any,
+    id: string,
+}
+
 interface IIdProps {
     id: string,
 }
@@ -26,4 +32,6 @@ export interface ICompositionStateType {
     imageURL: string,
     description: string,
 }
+
+
 

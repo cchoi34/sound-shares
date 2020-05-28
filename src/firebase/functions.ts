@@ -1,31 +1,32 @@
 import * as firebase from "firebase";
+import React from "react";
+import { ICompositionStateType } from "../types/types";
 
-export function testingLoad() {
-    const rootRef = firebase.database().ref();
+// export function testingLoad() {
+//     const rootRef = firebase.database().ref();
 
-    const nameRef = rootRef.child('name');
-        nameRef.on('value', snap => {
-            this.setState({
-                name: snap.val(),
-            })
-        })
+//     const nameRef = rootRef.child('name');
+//         nameRef.on('value', snap => {
+//             this.setState({
+//                 name: snap.val(),
+//             })
+//         })
 
-        const imageRef = rootRef.child('imageURL');
-        imageRef.on('value', snap => {
-            this.setState({
-                imageURL: snap.val(),
-            })
-        })
-}
+//         const imageRef = rootRef.child('imageURL');
+//         imageRef.on('value', snap => {
+//             this.setState({
+//                 imageURL: snap.val(),
+//             })
+//         })
+// }
 
-export function getCompositions(component) {
+export function getCompositions(component: React.Component) {
     try {
         const compositionRef = firebase.database().ref().child('compositions');
     
         compositionRef.on('value', snap => {
             const data = snap.val();
             let response;
-            console.log("snap val: ", data);
             if (!Array.isArray(data)) {
                 response = Object.values(data);
             } else {
@@ -41,12 +42,15 @@ export function getCompositions(component) {
     }
 }
 
-export function getSingleComposition(component, id) {
+export function getSingleComposition(component: React.Component, id: string) {
     try {
         const singleCompositionRef = firebase.database().ref().child("compositions").child(`${id}`);
 
         singleCompositionRef.on('value', snap => {
             const data = snap.val();
+            if (!data) {
+                return;
+            }
             component.setState({
                 name: data.name,
                 imageURL: data.imageURL,
@@ -59,7 +63,7 @@ export function getSingleComposition(component, id) {
     }
 }
 
-export function postComposition(state) {
+export function postComposition(state: ICompositionStateType) {
     try {
         const defaults = getDefaultValues();
     
@@ -68,7 +72,7 @@ export function postComposition(state) {
         const description = state.description || defaults.description;
     
         const compositionList = firebase.database().ref().child('compositions');
-        const newComposition = compositionList.push();
+        const newComposition = compositionList.push() as any;
         const key = newComposition.getKey();
     
         newComposition.set({
@@ -83,7 +87,7 @@ export function postComposition(state) {
     }
 }
 
-export function deleteComposition(id) {
+export function deleteComposition(id: string) {
     try {
         const rootRef = firebase.database().ref();
         const compositionRef = rootRef.child('compositions');
@@ -95,7 +99,7 @@ export function deleteComposition(id) {
     }
 }
 
-export function updateComposition(id, body) {
+export function updateComposition(id: string, body: ICompositionStateType) {
     try {
         const compositionRef = firebase.database().ref().child('compositions');
         const compToUpdate = compositionRef.child(`${id}`);

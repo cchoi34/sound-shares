@@ -6,7 +6,7 @@ import {
     Link,
     Redirect
   } from "react-router-dom";
-import { getCompositions, deleteComposition, getSingleComposition } from "../firebase/functions.js";
+import { getCompositions, deleteComposition, getSingleComposition } from "../firebase/functions";
 import { nullProps } from "../types/types";
 
 type compositionType = {
@@ -48,9 +48,9 @@ class Compositions extends React.Component<nullProps, compositionStateType> {
                                         <p className="compositions__title">{composition.name}</p>
 
                                     </Link>
-                                        <button className="compositions__button-delete" onClick={() => {
+                                        {/* <button className="compositions__button-delete" onClick={() => {
                                             deleteComposition(composition.id);
-                                        }}>X</button>
+                                        }}>X</button> */}
                                 </li>
                             )
                         })}

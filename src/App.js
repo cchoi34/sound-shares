@@ -1,5 +1,4 @@
 import React from 'react';
-import logo from './logo.svg';
 import firebase from "firebase/app";
 import "firebase/auth";
 import {
@@ -25,7 +24,6 @@ import SingleComposition from "./components/SingleComposition";
 import Footer from "./components/Footer";
 import UpdateComposition from "./components/UpdateComposition";
 import Upload from "./components/Upload";
-import { render } from '@testing-library/react';
 
 
 class App extends React.Component {

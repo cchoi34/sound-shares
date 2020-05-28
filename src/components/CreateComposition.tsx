@@ -1,5 +1,5 @@
 import React, { SyntheticEvent } from 'react';
-import {postComposition} from '../firebase/functions.js';
+import {postComposition} from '../firebase/functions';
 import { nullProps, IEditCompositionStateType } from "../types/types";
 
 class CreateComposition extends React.Component<nullProps, IEditCompositionStateType> {
@@ -27,7 +27,6 @@ class CreateComposition extends React.Component<nullProps, IEditCompositionState
     }
 
     handleSubmit(event: SyntheticEvent) {
-        console.log("Submitted!", this.state);
         event.preventDefault();
         postComposition(this.state);
         this.handleNotification();
